@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react"
+import TodoForm from "./TodoForm"
 
 function App(){
-  const [newItem, setNewItem]  = useState("")
   const [todos, setTodos] = useState([])
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    setTodos([...todos, {id:crypto.randomUUID(), title:newItem, completed:false }])
-    setNewItem("")
-    }
 
   function toggleTodo(id, status) {
 
@@ -31,13 +25,7 @@ function App(){
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="new-item-form">
-      <div className="form-row">
-        <label htmlFor="item">New Item</label>
-        <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" id="item"/>
-      </div>
-      <button className="btn">Add</button>
-    </form>
+    <TodoForm />
     <h1 className="header">
       ToDo List
     </h1>
