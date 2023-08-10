@@ -46,6 +46,7 @@ function App(){
       ToDo List
     </h1>
     <ul className="list">
+      {todos.length===0 && "No ToDos"}
       {todos.map(todo => {
         return (
         <li key={todo.id}>
@@ -53,7 +54,7 @@ function App(){
           <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
           {todo.title}
         </label>
-        <button className="btn btn-danger">Delete</button>
+        <button onClick={() => deleteTodo(todo.id)} className="btn btn-danger">Delete</button>
       </li>
         )
       })}
